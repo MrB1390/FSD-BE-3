@@ -11,7 +11,7 @@ import orderRouter from './Routers/order.router.js';
 
 dotenv.config();
 
-const allowedOrigin = ['https://order-management-3405.netlify.app']
+const allowedOrigin = ['https://order-management-3405.netlify.app','http://localhost:5173']
 
 const app = express();
 
