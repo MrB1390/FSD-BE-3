@@ -1,8 +1,8 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { createUser, deleteUserById, getUserAll, getUserById, updateUserById,updateUserRoleById } from '../Controller/user.controller.js';
-import { authAccessLogin } from '../Middleware/auth.middleware.js';
+import { countAll, createUser, deleteUserById, getUserAll, getUserById, updateUserById,updateUserRoleById } from '../Controller/user.controller.js';
+import { authAccessLogin, authLogin } from '../Middleware/auth.middleware.js';
 
 const router = express.Router();
 
@@ -19,6 +19,7 @@ const upload = multer({storage:storage});
 
 router.post('/user', upload.single('image'),authAccessLogin, createUser);
 router.post('/user',authAccessLogin, createUser);
+router.get('/count',authLogin,countAll);
 router.get('/getUser',authAccessLogin, getUserAll);
 router.get('/:id',authAccessLogin,getUserById);
 router.put('/edit/:id',authAccessLogin,updateUserById);

@@ -2,6 +2,10 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../Models/user.schema.js";
+import Product from "../Models/product.schema.js";
+import Category from "../Models/category.schema.js";
+import Order from "../Models/order.schema.js";
+
 
 dotenv.config();
 
@@ -119,3 +123,15 @@ export const updateUserRoleById = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+export const countAll = async(req,res) => {
+  try {
+    const userCount = await User.countDocuments();
+    const productCount = await Product.countDocuments();
+    const categoryCount = await Category.countDocuments();
+    const orderCount = await Order.countDocuments();
+    res.status(200).json({message: "Fetched Succesfully", data: {userCount,productCount,categoryCount,orderCount}})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error or Error Fetchng" });
+  }
+}
