@@ -10,6 +10,9 @@ const orderSchema = new mongoose.Schema({
         required: [true, 'customerName is required'],
         maxLength: 50,
     },
+    customerId: {
+        type: Number,
+    },
     customerMail: {
         type: String,
         required: [true, 'customerMail is required'],
