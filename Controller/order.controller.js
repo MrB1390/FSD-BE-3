@@ -125,12 +125,12 @@ export const createOrder = async (req, res) => {
 
   export const updateOrderStatusById = async (req, res) => {
     const id = req.params.id;
-    const { orderStatus } = req.body; // Assuming the new role is sent in the request body
+    const { deliveryStatus } = req.body; // Assuming the new role is sent in the request body
   
     try {
       const updatedOrder = await Order.findOneAndUpdate(
         { orderId: id },
-        { orderStatus },
+        { deliveryStatus },
         { new: true } // This option ensures that the updated user is returned
       );
   

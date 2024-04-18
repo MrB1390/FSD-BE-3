@@ -28,6 +28,11 @@ const orderSchema = new mongoose.Schema({
         enum : ['placed','not-placed'],
         default: 'placed'
     }, 
+    deliveryStatus: {
+         type: String,
+         enum : ['Delivered','Pending'],
+         default: 'Pending'
+    },
     totalPrice:{
           type: Number,
           required: [true, 'totalPrice is required'],
